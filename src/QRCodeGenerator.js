@@ -73,7 +73,7 @@ const QRCodeGenerator = () => {
                     </div>
                     <div className=" grid gap-3 mt-5 justify-center">
                         {qrCodeData && (
-                            <button className='max-sm:w-64 border-2 w-80 bg-blue-400 pl-3 pr-3 h-12 rounded-lg  font-bold justify-center items-center flex  ' onClick={handleDownloadQRCode}> <img src={download} className='h-6 w-6' alt="" /> Télécharger le QR Code</button>
+                            <button className='max-sm:w-64  w-80 bg-blue-400 pl-3 pr-3 h-12 rounded-lg  font-bold justify-center items-center flex transmition-all duration-700 transform hover:scale-110 hover:bg-cyan-500' onClick={handleDownloadQRCode}> <img src={download} className='h-6 w-6' alt="" /> Télécharger le QR Code</button>
                         )}
                     </div>
                 </div>
@@ -81,20 +81,20 @@ const QRCodeGenerator = () => {
 
             </div>
 
-            <div className="grid    mb-20 justify-center max-sm:flex-col  items-center">
+            <div className="grid   max-md:flex-col mb-20 justify-center max-sm:flex-col  items-center">
 
 
 
                 <h1 className=" max-sm:text-2xl font-bold text-3xl mt-10">Pour Quelle Information voudriez-vous Generer Un QR Code ?</h1>
                 <div className="">
                     <div className=" flex-wrap  space-x-5 space-y-5 items-center ">
-                        <button onClick={() => setCategory("lien")} className="border-2 p-2 rounded-lg hover:bg-green-500 hover:text-white  ">Lien</button>
-                        <button onClick={() => setCategory("text")} className="border-2 p-2  hover:bg-green-500 hover:text-white   rounded-lg">Text</button>
-                        <button onClick={() => setCategory("email")} className="border-2 p-2  hover:bg-green-500 hover:text-white   rounded-lg">Email</button>
-                        <button onClick={() => setCategory("appel")} className="border-2 p-2  hover:bg-green-500 hover:text-white   rounded-lg">Appel</button>
-                        <button onClick={() => setCategory("sms")} className="border-2 p-2  hover:bg-green-500 hover:text-white   rounded-lg">Sms</button>
-                        <button onClick={() => setCategory("v-card")} className="border-2 p-2  hover:bg-green-500 hover:text-white   rounded-lg">V-Card</button>
-                        <button onClick={() => setCategory("whatsApp")} className="border-2 p-2  hover:bg-green-500 hover:text-white rounded-lg">WhatsApp</button>
+                        <button onClick={() => setCategory("lien")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">Lien</button>
+                        <button onClick={() => setCategory("text")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">Text</button>
+                        <button onClick={() => setCategory("email")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">Email</button>
+                        <button onClick={() => setCategory("appel")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">Appel</button>
+                        <button onClick={() => setCategory("sms")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">Sms</button>
+                        <button onClick={() => setCategory("v-card")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">V-Card</button>
+                        <button onClick={() => setCategory("whatsApp")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">WhatsApp</button>
                     </div>
 
                     <div className="max-sm:m-4 max-sm:w-auto  mt-10 p-10 justify-center items-center rounded-xl bg-gradient-to-t from-yellow-300 to-slate-300">
@@ -379,7 +379,7 @@ const QRCodeGenerator = () => {
                             </div>
                         )}
                     </div>
-                    <button className='mt-12 border-2 pl-3 pr-3 bg-amber-800 h-12 rounded-lg text-white font-bold w-80' onClick={handleGenerateQRCode}>Générer QR Code</button>
+                    <button className='mt-12 border-2 pl-3 pr-3 bg-amber-800 h-12 rounded-lg text-white font-bold w-80  transmition-all duration-700 transform hover:scale-110 hover:text-black hover:bg-green-500' onClick={handleGenerateQRCode}>Générer QR Code</button>
 
                 </div>
 
