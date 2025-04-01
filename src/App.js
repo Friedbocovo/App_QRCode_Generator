@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from './image/icons8-qr-code-48.png';
+import menu from './image/icons8-menu.svg'
+import './index.css';
+import QRCodeGenerator from "./QRCodeGenerator"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className=" text-center fjustify-center item-center ml-20 mr-20 max-sm:ml-0  max-sm:mr-0">
+      <header className="flex justify-between mt-5 mb-5 ">
+        <img src={logo} className='w-8 h-8' alt="logo" />
+        {/*<img src={menu} className='w-6 h-8' alt="" />*/}
       </header>
+
+      <QRCodeGenerator />
     </div>
   );
 }
