@@ -4,10 +4,16 @@ import download from "./image/download-solid.svg"
 import TextField from './components/inputs/TextField';
 import countryCodes from './CountryCode';
 import BgQrCode from "./image/bg-qrcode.jpeg"
+import bb from "./bb"
 const QRCodeGenerator = () => {
     const [category, setCategory] = useState('lien');
-    const [formData, setFormData] = useState({});
     const [qrCodeData, setQrCodeData] = useState('');
+
+    const [formData, setFormData] = useState({
+        countryCode: "",
+        phoneNumber: "",
+        message: ""
+      });
 
     const handleInputChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,6 +45,10 @@ const QRCodeGenerator = () => {
         END:VCARD
       `);
         } else if (category === "whatsApp") {
+            console.log("Code Pays:", formData.countryCode);
+            console.log("Numéro:", formData.phoneNumber);
+            console.log("Message:", formData.message);
+
             setQrCodeData(`https://wa.me/${formData.countryCode}${formData.phoneNumber}?text=${formData.message}`);
         }
     };
@@ -55,23 +65,24 @@ const QRCodeGenerator = () => {
 
         <>
 
-            <div className=" max-md:grid max-sm:grid  flex justify-evenly bg-gradient-to-r from-amber-300 to-blue-500 items-center rounded-3xl p-5 bg-white  max-sm:w-screen">
+            <div className="mt-16  max-md:grid max-sm:grid  flex justify-evenly bg-gradient-to-r from-amber-300 to-blue-500 items-center rounded-3xl p-5 bg-white  max-sm:w-screen">
 
                 <h1 className="max-sm:text-xl max-sm:w-auto  font-bold text-4xl w-96">Transformez vos informations en QR Code et partagez-les rapidement.</h1>
 
                 <div className="">
                     <div className=" bg-[url('./image/bg-qrcode.jpeg')] bg-cover bg-center bg-blend-lighten bg-white/60
-                     bg-slate-200 w-96 h-96 border-2 rounded-lg max-sm:w-auto max-sm:h-80 max-md:mt-10 flex justify-center items-center flex-col bg-gradient-to-r from-black to-purple-200 p-10 ">
+                     bg-slate-200 w-96 h-96 border-2 rounded-lg max-sm:w-auto max-sm:h-80 max-md:mt-10 flex justify-center items-center flex-col ">
 
                         {qrCodeData && (
-                            <div >
-                                <QRCodeCanvas value={qrCodeData} size={230} id="qrCodeCanvas" />
+                            <div style={{ backgroundColor: "white", padding: "10px", borderRadius: "8px" }}>
+                                <QRCodeCanvas value={qrCodeData} bgColor="white"
+                                    size={230} id="qrCodeCanvas" />
                             </div>
                         )}
 
 
                     </div>
-                    <div className=" grid gap-3 mt-5 justify-center">
+                    <div className=" grid gap-3 mt-5 justify-center " >
                         {qrCodeData && (
                             <button className='max-sm:w-64  w-80 bg-blue-400 pl-3 pr-3 h-12 rounded-lg  font-bold justify-center items-center flex transmition-all duration-700 transform hover:scale-110 hover:bg-cyan-500' onClick={handleDownloadQRCode}> <img src={download} className='h-6 w-6' alt="" /> Télécharger le QR Code</button>
                         )}
@@ -85,7 +96,7 @@ const QRCodeGenerator = () => {
 
 
 
-                <h1 className=" max-sm:text-2xl font-bold text-3xl mt-10">Pour Quelle Information voudriez-vous Generer Un QR Code ?</h1>
+                <h1 className=" max-sm:ml-10 max-sm:mr-10 max-sm:text-xl font-bold text-2xl mt-10">Pour quelle information voudriez-vous generer un Code QR ?</h1>
                 <div className="">
                     <div className=" flex-wrap  space-x-5 space-y-5 items-center ">
                         <button onClick={() => setCategory("lien")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">Lien</button>
@@ -97,7 +108,7 @@ const QRCodeGenerator = () => {
                         <button onClick={() => setCategory("whatsApp")} className="border-2 p-2 hover:text-white rounded-lg transmition-all duration-700 transform hover:scale-150 hover:bg-blue-500 ">WhatsApp</button>
                     </div>
 
-                    <div className="max-sm:m-4 max-sm:w-auto  mt-10 p-10 justify-center items-center rounded-xl bg-gradient-to-t from-yellow-300 to-slate-300">
+                    <div className="max-sm:m-4 max-sm:w-auto  mt-10 p-10 justify-csenter items-center rounded-xl bg-gradient-to-t from-yellow-300 to-slate-300">
                         {category === "lien" && (
                             <div className="flex justify-center items-center">
                                 <div className=" grid gap-5 ">
@@ -114,16 +125,16 @@ const QRCodeGenerator = () => {
 
                         {category === "text" && (
 
-                            <div className="flex justify-center items-center">                            
-                            <div className="grid gap-5">
-                                <label className='font-bold text-left'>Text</label>
-                                <TextField
-                                    type="text"
-                                    name="text"
-                                    placeholder="Entrez un texte..."
-                                    onChange={handleInputChange}
-                                />
-                            </div>
+                            <div className="flex justify-center items-center">
+                                <div className="grid gap-5">
+                                    <label className='font-bold text-left'>Text</label>
+                                    <TextField
+                                        type="text"
+                                        name="text"
+                                        placeholder="Entrez un texte..."
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
                             </div>
 
                         )}
@@ -183,7 +194,10 @@ const QRCodeGenerator = () => {
                                         <label className=' font-bold text-left'>Country code</label>
                                         <select
                                             name="countryCodes"
-                                            onChange={handleInputChange}
+                                            onChange={(e) => {
+                                                setFormData({ ...formData, countryCode: e.target.value  });
+                                                console.log("Nouveau Code Pays:", e.target.value);
+                                              }}
                                             className="max-md:w-96 max-sm:w-64 h-12 w-80 rounded-lg p-2"
                                         >
                                             {countryCodes.map((country, index) => (
@@ -209,7 +223,10 @@ const QRCodeGenerator = () => {
                                         className=' border-neutral-500 border-2 rounded-lg p-2'
                                         name="smsMessage"
                                         placeholder="Message SMS"
-                                        onChange={handleInputChange}
+                                        onChange={(e) => {
+                                            setFormData({ ...formData, message: e.target.value });
+                                            console.log("Nouveau message:", e.target.value);
+                                          }}
                                     /></div>
                             </div>
                         )}
@@ -350,7 +367,11 @@ const QRCodeGenerator = () => {
                                     <div className="grid gap-5">
                                         <label className=' font-bold text-left'>Country code</label>
                                         <select name="countryCodes" className='max-md:w-96 max-sm:w-64 h-12 w-80 rounded-lg p-2'
-                                            onChange={handleInputChange} >
+                                            onChange={(e) => {
+                                                setFormData({ ...formData, countryCode: e.target.value  });
+                                                console.log("Nouveau Code Pays:", e.target.value);
+                                              }}
+                                               >
 
                                             {countryCodes.map((country, index) => (
                                                 <option key={index} value={country.code}>
@@ -373,14 +394,19 @@ const QRCodeGenerator = () => {
                                         className='border-2 border-neutral-500  rounded-lg p-2'
                                         name="whatsappMessage"
                                         placeholder="Message WhatsApp"
-                                        onChange={handleInputChange}
+                                        onChange={(e) => {
+                                            setFormData({ ...formData, message: e.target.value });
+                                            console.log("Nouveau message:", e.target.value);
+                                          }}
                                     />
                                 </div>
                             </div>
                         )}
                     </div>
-                    <button className='mt-12 border-2 pl-3 pr-3 bg-amber-800 h-12 rounded-lg text-white font-bold w-80  transmition-all duration-700 transform hover:scale-110 hover:text-black hover:bg-green-500' onClick={handleGenerateQRCode}>Générer QR Code</button>
+                    <div className="flex justify-center items-center">
+                        <button className='max-sm:border-0 max-sm:rounded-none fixed bottom-0 font-semibol justify-center  transform  md:px-6 md:py-3 shadow-lg md:relative md:bottom-auto md:left-auto m:translate-x-0 mt-12 border-2 pl-3 pr-3 bg-amber-800 h-12 rounded-lg text-white font-bold w-80 max-sm:w-screen transmition-all duration-700  hover:scale-110 hover:text-black hover:bg-green-500' onClick={handleGenerateQRCode}><a href="#" className="">Générer QR Code </a></button>
 
+                    </div>
                 </div>
 
             </div>
