@@ -1,9 +1,19 @@
 import Linkedin from "./image/linkedin.svg"
 import Github from "./image/github_3291695.png"
+import { motion } from "framer-motion";
+
 const Footer= ()=>{
     return (
         <>
-        <footer class="bg-gray-800 text-white py-6 max-sm:hidden">
+                    <motion.div
+        
+                        initial={{ opacity: 0, y: 100 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 4 }}
+                        viewport={{ once: true }}
+                        className=" shadow-lg text-center justify-center item-center max-sm:ml-0  max-sm:mr-0 ">
+        
+        <footer class="bg-gray-800 text-white py-6 max-md:hidden max-sm:hidden">
         <div class="container mx-auto px-4">
           <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="text-center md:text-left mb-4 md:mb-0">
@@ -27,6 +37,8 @@ const Footer= ()=>{
           </div>
         </div>
       </footer>
+
+      </motion.div>
         </>
     )
 }

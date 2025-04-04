@@ -10,3 +10,7 @@
   .width{
     width: 600px;
   }
+
+  .trans{
+    -webkit-transition: all 700ms ease-in;
+  }
