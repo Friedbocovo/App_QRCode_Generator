@@ -1,9 +1,33 @@
 {
   "description": "Generate QR codes for links, messages, etc.",
+
+  "name": "QRGenerator",
   "short_name": "QRCode",
-  "name": "QRCode APP",
-  "icons": [
+  "id": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay"],
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["utilities", "productivity"],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "prefer_related_applications": false,
+  "related_applications": [
     {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.example.app",
+      "id": "com.example.app"
+    }
+  ],
+
+  "icons": [
+ 
+  {
       "src": "favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
@@ -19,9 +43,7 @@
       "npm startsizes": "512x512",
       "sizes":"512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
+  
+
