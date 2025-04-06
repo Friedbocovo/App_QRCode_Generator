@@ -16,7 +16,8 @@
     {
       "src": "logo512.png",
       "type": "image/png",
-      "npm startsizes": "512x512"
+      "npm startsizes": "512x512",
+      "sizes":"512x512"
     }
   ],
   "start_url": ".",

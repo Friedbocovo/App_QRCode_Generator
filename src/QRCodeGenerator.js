@@ -110,7 +110,7 @@ const QRCodeGenerator = () => {
 
 
 
-                    <h1 className=" max-sm:ml-4 max-sm:mr-4 max-sm:text-lg font-bold text-2xl mt-10">Pour quelle information voudriez-vous generer un Code QR ?</h1>
+                    <h1 className=" max-sm:ml-4 max-sm:mr-4 max-sm:text-lg font-bold text-2xl mt-10">Quelle information voulez-vous transformer en code QR ? </h1>
                     <div className="max-sm:ml-5 max-sm:mr-5">
                         <div className=" max-sm:ml-10 max-sm:mr-10 flex-wrap justify-center  flex items-center gap-4 mt-10">
                             <button onClick={() => setCategory("lien")} className=" flex items-center gap-2 border-2  border-stone-400 hover:border-0 p-2 hover:text-white  rounded-lg transmition-all duration-700 transform hover:scale-125 hover:bg-blue-500 "><img className='h-4 w-4 ' src={lien} alt="" />Lien</button>
