@@ -1,4 +1,8 @@
+import { precacheAndRoute } from 'workbox-precaching';
 
+/* eslint-disable no-restricted-globals */
+
+precacheAndRoute(self.__WB_MANIFEST);
 
 const CACHE_NAME = 'my-cache-v1';
 const urlsToCache = [
@@ -10,7 +14,7 @@ const urlsToCache = [
 ];
 
 // Installation du Service Worker
-window.addEventListener('install', (event) => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('Cache ouvert');
@@ -20,7 +24,7 @@ window.addEventListener('install', (event) => {
 });
 
 // Activation du Service Worker
-window.addEventListener('activate', (event) => {
+self.addEventListener('activate', (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -35,14 +39,11 @@ window.addEventListener('activate', (event) => {
   );
 });
 
-// Intercepter les requêtes et servir les fichiers du cache
-window.addEventListener('fetch', (event) => {
+// Interception des requêtes et réponse via le cache
+self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      // Si une réponse est dans le cache, on la retourne, sinon on va chercher le fichier en ligne
       return cachedResponse || fetch(event.request);
     })
   );
 });
-
-export default ServiceWorker

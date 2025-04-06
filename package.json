@@ -20,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate-sw": "workbox injectManifest workbox-config.js"
+
   },
   "eslintConfig": {
     "extends": [
@@ -43,9 +45,6 @@
   "devDependencies": {
     "tailwindcss": "^3.4.17",
     "workbox-cli": "^7.3.0"
-  },
-  "scripts": {
-    "generate-sw": "workbox injectManifest workbox-config.js"
   }
 }
 
