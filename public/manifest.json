@@ -1,9 +1,9 @@
 {
-  "description": "Generate QR codes for links, messages, etc.",
 
-  "name": "QRGenerator",
+  "name": "QRCode Generator",
   "short_name": "QRCode",
   "id": "/",
+  "description": "Generate QR codes for links, messages, etc.",
   "start_url": "/",
   "display": "standalone",
   "display_override": ["window-controls-overlay"],
@@ -16,34 +16,31 @@
   "launch_handler": {
     "client_mode": "focus-existing"
   },
-  "prefer_related_applications": false,
-  "related_applications": [
-    {
-      "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=com.example.app",
-      "id": "com.example.app"
-    }
-  ],
-
+  
+  "scope": "/",
+  "scope_extensions": [],
   "icons": [
- 
-  {
-      "src": "favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+    {
+      "src": "icons/logo192.png",
+      "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "icons/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot1.png",
+      "sizes": "540x720",
+      "type": "image/png"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
-      "npm startsizes": "512x512",
-      "sizes":"512x512"
+      "src": "screenshots/screenshot2.png",
+      "sizes": "540x720",
+      "type": "image/png"
     }
   ]
 }
-  
-
