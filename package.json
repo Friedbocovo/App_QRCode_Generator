@@ -41,6 +41,13 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "workbox-cli": "^7.3.0"
+  },
+  "scripts": {
+    "generate-sw": "workbox injectManifest workbox-config.js"
   }
 }
+
+
+
