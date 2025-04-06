@@ -1,6 +1,5 @@
 import React from 'react'
 import logo from './image/logo.png';
-import menu from './image/icons8-menu.svg'
 import { motion } from "framer-motion";
 import './index.css';
 import QRCodeGenerator from "./QRCodeGenerator"
@@ -23,14 +22,14 @@ const Home = () => {
                     <div className="hidden md:flex justify-between items-center">
                         <img src={logo} alt="" className="h-10 w-10" />
                         <nav>
-                            <h1 className="text-2xl font-bold text-gray-800">Code QR Generator</h1>
+                            <h1 className="text-2xl font-bold text-gray-800">QRCode Generator</h1>
 
                         </nav>
                     </div>
 
                     {/* Header Mobile */}
                     <div className="md:hidden items-center">
-                        <h1 className="text-xl font-bold text-gray-800">Code QR</h1>
+                        <h1 className="text-xl font-bold text-gray-800">QRCode</h1>
                     </div>
                 </motion.div >
             </header>
