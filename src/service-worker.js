@@ -10,7 +10,8 @@ const urlsToCache = [
   '/index.html',
   '/styles.css',
   '/main.js',
-  // Ajoutez ici les autres fichiers que vous voulez mettre en cache
+  '/logo.png',
+  // Ajoute d'autres ressources si nécessaire
 ];
 
 // Installation du Service Worker
@@ -39,11 +40,21 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Interception des requêtes et réponse via le cache
+// Interception des requêtes et gestion via cache
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request);
-    })
-  );
+  // Par défaut, stratégie "cache-first" pour les ressources statiques
+  if (event.request.url.includes('/static/')) {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        return cachedResponse || fetch(event.request);
+      })
+    );
+  } else {
+    // Stratégie "network-first" pour les autres requêtes (API, etc.)
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match(event.request);
+      })
+    );
+  }
 });
